@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVCGI Institute - Payment</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        .payment-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+        }
+        .pay-button {
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .pay-button:hover {
+            background: #009ec3;
+            transform: scale(1.05);
+        }
+        #qr-container {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Payment</h1>
+        <p>Select your course and proceed with the payment</p>
+    </header>
+    
+    <div class="payment-container">
+        <label for="course">Select Course:</label>
+        <select id="course" onchange="updateAmount()">
+            <option value="" disabled selected>Select a course</option>
+        </select>
+        
+        <label for="amount">Amount (₹):</label>
+        <input type="text" id="amount" readonly>
+        
+        <button class="pay-button" onclick="generateQRCode()">Proceed to Pay</button>
+        
+        <div id="qr-container">
+            <h3>Scan QR Code to Pay</h3>
+            <canvas id="qr-code"></canvas>
+        </div>
+    </div>
+
+    <script>
+        const courses = {
+            "ADCA": 19000,
+            "ADIT": 19000,
+            "ADCHN": 19000,
+            "ADCP": 19000,
+            "HONOURS": 19000,
+            "DOAP": 9000,
+            "CCC": 3500,
+            "O Level": 32000,
+            "Oracle": 17000,
+            "ADCA + ADCHN": 24000,
+            "ADCA + ADIT": 24000,
+            "ADCA + ADIT + ADCHN": 27000,
+            "DOAP + ADCHN": 18000,
+            "ADCA + ADCP": 23000,
+            "ADIT + ADCHN": 21000,
+            "ADCA + DOAP": 25000,
+            "ADCA + CCC": 21000,
+            "ADCA + O Level": 45000,
+            "ADIT + Oracle": 27000,
+            "ADCA + ADIT + ADCP": 50000,
+            "ADCA + ADIT + ADCHN + ADCP": 55555
+        };
+        
+        const courseDropdown = document.getElementById("course");
+        const amountInput = document.getElementById("amount");
+        
+        Object.keys(courses).forEach(course => {
+            let option = document.createElement("option");
+            option.value = course;
+            option.textContent = `${course} - ₹${courses[course]}`;
+            courseDropdown.appendChild(option);
+        });
+        
+        function updateAmount() {
+            let selectedCourse = courseDropdown.value;
+            amountInput.value = courses[selectedCourse] || "";
+        }
+        
+        function generateQRCode() {
+            let selectedCourse = courseDropdown.value;
+            let amount = courses[selectedCourse];
+            if (!selectedCourse || !amount) {
+                alert("Please select a course before proceeding to payment.");
+                return;
+            }
+            let qrData = `upi://pay?pa=ekanshsharma970-1@okicici&pn=AVCGI Institute&mc=0000&tid=1234567890&tr=123456&tn=Course Payment - ${selectedCourse}&am=${amount}&cu=INR`;
+            
+            let qr = new QRious({
+                element: document.getElementById("qr-code"),
+                value: qrData,
+                size: 200
+            });
+            
+            document.getElementById("qr-container").style.display = "block";
+        }
+    </script>
+</body>
+</html>

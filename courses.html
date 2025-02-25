@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVCGI Institute - Courses</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            position: relative;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s ease-in-out;
+        }
+        .navbar a:hover {
+            color: #00d4ff;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            margin-top: 60px;
+        }
+        .courses-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 15px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+        .enroll-button {
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+        .enroll-button:hover {
+            background: #009ec3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="admission.html">Admission</a>
+        <a href="pay.html">Payment</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    
+    <header>
+        <h1>Our Courses</h1>
+        <p>Choose the best course for your career</p>
+    </header>
+    
+    <section class="courses-container">
+        <script>
+            const courses = [
+               {name: "ADCA", desc: "Advanced Diploma in Computer Applications - Learn the fundamentals of computing, office tools, and basic programming."},
+                {name: "ADIT", desc: "Advanced Diploma in Information Technology - Covers IT fundamentals, networking, and database management."},
+                {name: "ADCHN", desc: "Advanced Diploma in Computer Hardware & Networking - Learn about computer hardware components, networking basics, and troubleshooting."},
+                {name: "ADCP", desc: "Advanced Diploma in Computer Programming - Focuses on coding, software development, and problem-solving techniques."},
+                {name: "HONOURS", desc: "Specialized Honours Program - A comprehensive advanced program covering multiple IT domains."},
+                {name: "DOAP", desc: "Diploma in Office Automation & Publishing - Training in office tools, document processing, and publishing software."},
+                {name: "CCC", desc: "Course on Computer Concepts - A beginner-friendly course covering computer basics and internet usage."},
+                {name: "O Level", desc: "Foundation Level Computer Course - A government-certified program covering IT fundamentals."},
+                {name: "Oracle", desc: "Database Management & SQL Programming - Learn database creation, management, and SQL queries."},
+                {name: "ADCA + ADCHN", desc: "Combination of ADCA and ADCHN - Master both computing applications and networking essentials."},
+                {name: "ADCA + ADIT", desc: "Combination of ADCA and ADIT - A mix of computing basics and IT concepts."},
+                {name: "ADCA + ADIT + ADCHN", desc: "Combination of ADCA, ADIT, and ADCHN - Covers computing, IT, and networking for a complete IT foundation."},
+                {name: "DOAP + ADCHN", desc: "Combination of DOAP and ADCHN - Learn office automation along with networking fundamentals."},
+                {name: "ADCA + ADCP", desc: "Combination of ADCA and ADCP - Covers basic computing as well as programming skills."},
+                {name: "ADIT + ADCHN", desc: "Combination of ADIT and ADCHN - Learn IT and networking together."},
+                {name: "ADCA + DOAP", desc: "Combination of ADCA and DOAP - Office automation combined with computer applications."},
+                {name: "ADCA + CCC", desc: "Combination of ADCA and CCC - A basic computing course with additional certification."},
+                {name: "ADCA + O Level", desc: "Combination of ADCA and O Level - A government-certified computing and IT foundation."},
+                {name: "ADIT + Oracle", desc: "Combination of ADIT and Oracle - IT knowledge with database expertise."},
+                {name: "ADCA + ADIT + ADCP", desc: "Combination of ADCA, ADIT, and ADCP - Covers computing, IT, and programming."},
+                {name: "ADCA + ADIT + ADCHN + ADCP", desc: "Comprehensive course covering computing, IT, networking, and programming."}
+            ];
+            
+            document.write(courses.map(course => `
+                <div class="course-card">
+                    <h2>${course.name}</h2>
+                    <p>${course.desc}</p>
+                    <button class="enroll-button" onclick="location.href='admission.html'">Enroll Now</button>
+                </div>
+            `).join(''));
+        </script>
+    </section>
+</body>
+</html>

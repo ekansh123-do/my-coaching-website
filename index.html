@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="description" content="Learn computer skills at the best coaching institute. Enroll now!">
+<meta name="keywords" content="computer classes, best coaching institute, Java, Python">
+<meta name="Ekanshr" content="AVCGI">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVCGI Institute - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            position: relative;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s ease-in-out;
+        }
+        .navbar a:hover {
+            color: #00d4ff;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        .container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+        h1 {
+            animation: fadeInDown 1s;
+        }
+        p {
+            animation: fadeInUp 1s;
+        }
+        .highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            font-size: 1.2em;
+            animation: fadeIn 1.5s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .highlight:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .enroll-btn {
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 10px;
+            animation: bounceIn 1.5s;
+        }
+        .enroll-btn:hover {
+            background: #009ec3;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="admission.html">Admission Form</a>
+        <a href="login.html">Login</a>
+        <a href="contact.html">Contact</a>
+        <a href="pay.html">Payment</a>
+    </div>
+    
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">Welcome to AVCGI Institute</h1>
+        <p class="animate__animated animate__fadeInUp">Your gateway to a brighter future in computer education.</p>
+        
+        <div class="highlight animate__animated animate__fadeIn">🎉 We provide a free computer with every course except CCC, O Level, and Oracle! 🎉</div>
+        <div class="highlight animate__animated animate__fadeIn">🛠️ Get a free hardware kit when enrolling in any hardware-related course! 🛠️</div>
+        <div class="highlight animate__animated animate__fadeIn">💡 Maximize your learning! We recommend choosing a course combination for better career growth. 💡</div>
+        
+        <a href="admission.html" class="enroll-btn animate__animated animate__bounceIn">Enroll Now</a>
+    </div>
+    <footer style="background: rgba(0, 0, 0, 0.8); color: #e0e0e0; text-align: center; padding: 10px; position: fixed; width: 100%; bottom: 0;">
+    <p>&copy; 2025 AVCGI Institute. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
